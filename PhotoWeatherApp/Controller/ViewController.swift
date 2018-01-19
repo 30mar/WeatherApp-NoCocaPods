@@ -18,6 +18,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var overlayView: UIImageView!
     @IBOutlet weak var background: UIImageView!
     
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var toolbar: UIToolbar!
     var cityName:String?
     var tempreture:String?
     var weatherConditon:String?
@@ -25,6 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var iconUrl: String?
     var iconImage:UIImage?
     var locationManager: CLLocationManager!
+    var weatherImage:UIImage?
     // location manager setup so we can get user coordinates in the beginning and get the weather for that coordinates
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +59,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
         }}
         
+    @IBAction func donePressed(_ sender: Any) {
+        doneButton.isEnabled = false
+         self.weatherImage = generateFinalPhoto()
+        performSegue(withIdentifier: "show", sender: self)
+        
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier! == "show"{
+            let historyVC = segue.destination as! HistoryViewController
+            //historyVC.image = weatherImage
+        }
+    }
     @IBAction func CameraPressed(_ sender: Any) {
         
         chooseSource(sourceType: .camera)
@@ -102,12 +118,29 @@ extension ViewController: UIImagePickerControllerDelegate,UINavigationController
         subCondition.text = weatherSubCondition!
         temp.text = tempreture
         watherIcon.image = iconImage!
+        doneButton.isEnabled = true
         dismiss(animated: true, completion: nil)
         
         
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    func hideBarsAndButtons(hide: Bool) {
+        toolbar.isHidden = hide
+        //self.navigationController?.setNavigationBarHidden(hide, animated: true)
+    }
+    func generateFinalPhoto() -> UIImage {
+        //Hide toolbar and navbar
+        hideBarsAndButtons(hide: true)
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        // Show toolbar and navbar
+        hideBarsAndButtons(hide: false)
+        return memedImage
     }
     
 }

@@ -18,6 +18,10 @@
 		FAAF75B32011FFB500B927AC /* NetworkCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B12011FFB500B927AC /* NetworkCode.swift */; };
 		FAAF75B52012092000B927AC /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B42012092000B927AC /* GCD.swift */; };
 		FAAF75B62012092000B927AC /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B42012092000B927AC /* GCD.swift */; };
+		FAAF75B82012563F00B927AC /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B72012563F00B927AC /* HistoryViewController.swift */; };
+		FAAF75B92012563F00B927AC /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B72012563F00B927AC /* HistoryViewController.swift */; };
+		FAAF75BC201262F000B927AC /* ModifiedCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75BB201262F000B927AC /* ModifiedCellCollectionViewCell.swift */; };
+		FAAF75BD201262F000B927AC /* ModifiedCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75BB201262F000B927AC /* ModifiedCellCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,8 @@
 		FAAF75AF2011EF9F00B927AC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FAAF75B12011FFB500B927AC /* NetworkCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCode.swift; sourceTree = "<group>"; };
 		FAAF75B42012092000B927AC /* GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
+		FAAF75B72012563F00B927AC /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		FAAF75BB201262F000B927AC /* ModifiedCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,14 +93,12 @@
 		FA0788732011DCD500A0D785 /* PhotoWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				FA0788742011DCD500A0D785 /* AppDelegate.swift */,
-				FA0788762011DCD500A0D785 /* ViewController.swift */,
-				FAAF75B42012092000B927AC /* GCD.swift */,
-				FAAF75B12011FFB500B927AC /* NetworkCode.swift */,
 				FA0788782011DCD500A0D785 /* Main.storyboard */,
-				FA07887B2011DCD500A0D785 /* Assets.xcassets */,
-				FA07887D2011DCD500A0D785 /* LaunchScreen.storyboard */,
-				FA0788802011DCD500A0D785 /* Info.plist */,
+				FA0788742011DCD500A0D785 /* AppDelegate.swift */,
+				FAAF75C02012673500B927AC /* Model */,
+				FAAF75BA201262C700B927AC /* View */,
+				FAAF75BE2012634F00B927AC /* Controller */,
+				FAAF75BF2012670100B927AC /* Resources */,
 			);
 			path = PhotoWeatherApp;
 			sourceTree = "<group>";
@@ -114,6 +118,42 @@
 				FAAF75AF2011EF9F00B927AC /* CoreLocation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAAF75BA201262C700B927AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAAF75BB201262F000B927AC /* ModifiedCellCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FAAF75BE2012634F00B927AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA0788762011DCD500A0D785 /* ViewController.swift */,
+				FAAF75B72012563F00B927AC /* HistoryViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FAAF75BF2012670100B927AC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FAAF75B42012092000B927AC /* GCD.swift */,
+				FAAF75B12011FFB500B927AC /* NetworkCode.swift */,
+				FA07887B2011DCD500A0D785 /* Assets.xcassets */,
+				FA07887D2011DCD500A0D785 /* LaunchScreen.storyboard */,
+				FA0788802011DCD500A0D785 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FAAF75C02012673500B927AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +262,8 @@
 				FA0788772011DCD500A0D785 /* ViewController.swift in Sources */,
 				FAAF75B22011FFB500B927AC /* NetworkCode.swift in Sources */,
 				FAAF75B52012092000B927AC /* GCD.swift in Sources */,
+				FAAF75BC201262F000B927AC /* ModifiedCellCollectionViewCell.swift in Sources */,
+				FAAF75B82012563F00B927AC /* HistoryViewController.swift in Sources */,
 				FA0788752011DCD500A0D785 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +275,8 @@
 				FAAF75B62012092000B927AC /* GCD.swift in Sources */,
 				FA07888A2011DCD500A0D785 /* PhotoWeatherAppTests.swift in Sources */,
 				FAAF75B32011FFB500B927AC /* NetworkCode.swift in Sources */,
+				FAAF75BD201262F000B927AC /* ModifiedCellCollectionViewCell.swift in Sources */,
+				FAAF75B92012563F00B927AC /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
