@@ -19,7 +19,7 @@ class HistoryViewController:UIViewController,UICollectionViewDelegate,UICollecti
         super.viewDidLoad()
         collection.delegate = self
         collection.dataSource = self
-       // print("historrrryyy")
+       // print("historrrryyy") 
     }
 
     @IBAction func backPressed(_ sender: Any) {

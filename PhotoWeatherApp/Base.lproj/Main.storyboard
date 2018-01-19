@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f7p-BQ-IqE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -207,17 +207,16 @@
             </objects>
             <point key="canvasLocation" x="909.60000000000002" y="127.28635682158921"/>
         </scene>
-        <!--View Controller-->
+        <!--Image View Controller-->
         <scene sceneID="zUT-Gs-tvq">
             <objects>
-                <viewController id="f7p-BQ-IqE" sceneMemberID="viewController">
+                <viewController id="f7p-BQ-IqE" customClass="ImageViewController" customModule="PhotoWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wAw-96-5ri">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gYB-AM-sms">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gYB-AM-sms">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JeO-rr-77T">
                                 <rect key="frame" x="20" y="20" width="37" height="30"/>
@@ -229,19 +228,61 @@
                                 <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="backPressed:" destination="f7p-BQ-IqE" eventType="touchUpInside" id="SO7-7o-ipW"/>
+                                </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvO-tT-Ow0">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Qdk-1D-Lbg"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Share" width="370" id="XAq-kO-hMs">
+                                        <connections>
+                                            <action selector="sharePressed:" destination="f7p-BQ-IqE" id="ss3-UV-ELx"/>
+                                            <segue destination="xmT-CY-Asc" kind="presentation" id="Cmi-oI-d7a"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gYB-AM-sms" firstAttribute="trailing" secondItem="EX8-RU-HlN" secondAttribute="trailing" id="25P-0R-oqN"/>
+                            <constraint firstItem="yvO-tT-Ow0" firstAttribute="leading" secondItem="EX8-RU-HlN" secondAttribute="leading" id="CEH-gQ-RsF"/>
+                            <constraint firstItem="gYB-AM-sms" firstAttribute="top" secondItem="wAw-96-5ri" secondAttribute="top" id="Rqq-aH-TB7"/>
                             <constraint firstItem="JeO-rr-77T" firstAttribute="leading" secondItem="EX8-RU-HlN" secondAttribute="leading" constant="20" id="S8O-dX-IQO"/>
+                            <constraint firstItem="yvO-tT-Ow0" firstAttribute="bottom" secondItem="EX8-RU-HlN" secondAttribute="bottom" id="VWL-4B-5wD"/>
+                            <constraint firstItem="yvO-tT-Ow0" firstAttribute="trailing" secondItem="EX8-RU-HlN" secondAttribute="trailing" id="YTA-4t-OJI"/>
+                            <constraint firstItem="gYB-AM-sms" firstAttribute="bottom" secondItem="EX8-RU-HlN" secondAttribute="bottom" id="dEV-ui-FtF"/>
+                            <constraint firstItem="gYB-AM-sms" firstAttribute="leading" secondItem="EX8-RU-HlN" secondAttribute="leading" id="hID-Ut-2kd"/>
                             <constraint firstItem="JeO-rr-77T" firstAttribute="top" secondItem="EX8-RU-HlN" secondAttribute="top" id="pKP-Le-g7W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EX8-RU-HlN"/>
                     </view>
+                    <connections>
+                        <outlet property="finalImage" destination="gYB-AM-sms" id="lHe-Ol-o2y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eu2-ZO-rp9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1652" y="128.18590704647679"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="tQK-3r-fT9">
+            <objects>
+                <viewController id="xmT-CY-Asc" customClass="LoginViewController" customModule="PhotoWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Occ-Tw-YJM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="gjc-jB-eSS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Zp-GT-8Ks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2377" y="128"/>
         </scene>
     </scenes>
 </document>

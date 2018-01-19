@@ -14,6 +14,12 @@
 		FA07887F2011DCD500A0D785 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA07887D2011DCD500A0D785 /* LaunchScreen.storyboard */; };
 		FA07888A2011DCD500A0D785 /* PhotoWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0788892011DCD500A0D785 /* PhotoWeatherAppTests.swift */; };
 		FA1AA3CA201271A200451B72 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1AA3C9201271A200451B72 /* HistoryViewController.swift */; };
+		FA1AA3CC201281A900451B72 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1AA3CB201281A900451B72 /* ImageViewController.swift */; };
+		FA1AA3D220128E1700451B72 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1AA3CE20128E1500451B72 /* FBSDKShareKit.framework */; };
+		FA1AA3D320128E1700451B72 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1AA3CF20128E1700451B72 /* FBSDKCoreKit.framework */; };
+		FA1AA3D420128E1700451B72 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1AA3D020128E1700451B72 /* FBSDKLoginKit.framework */; };
+		FA1AA3D520128E1700451B72 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1AA3D120128E1700451B72 /* Bolts.framework */; };
+		FA1AA3DB201292D300451B72 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1AA3DA201292D300451B72 /* LoginViewController.swift */; };
 		FAAF75B02011EF9F00B927AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAF75AF2011EF9F00B927AC /* CoreLocation.framework */; };
 		FAAF75B22011FFB500B927AC /* NetworkCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B12011FFB500B927AC /* NetworkCode.swift */; };
 		FAAF75B32011FFB500B927AC /* NetworkCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B12011FFB500B927AC /* NetworkCode.swift */; };
@@ -49,6 +55,13 @@
 		FA0788892011DCD500A0D785 /* PhotoWeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWeatherAppTests.swift; sourceTree = "<group>"; };
 		FA07888B2011DCD500A0D785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA1AA3C9201271A200451B72 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		FA1AA3CB201281A900451B72 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		FA1AA3CE20128E1500451B72 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		FA1AA3CF20128E1700451B72 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		FA1AA3D020128E1700451B72 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		FA1AA3D120128E1700451B72 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		FA1AA3D6201290B500451B72 /* PhotoWeatherApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoWeatherApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA1AA3DA201292D300451B72 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FAAF75AF2011EF9F00B927AC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FAAF75B12011FFB500B927AC /* NetworkCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCode.swift; sourceTree = "<group>"; };
 		FAAF75B42012092000B927AC /* GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
@@ -63,6 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1AA3D520128E1700451B72 /* Bolts.framework in Frameworks */,
+				FA1AA3D220128E1700451B72 /* FBSDKShareKit.framework in Frameworks */,
+				FA1AA3D320128E1700451B72 /* FBSDKCoreKit.framework in Frameworks */,
+				FA1AA3D420128E1700451B72 /* FBSDKLoginKit.framework in Frameworks */,
 				FAAF75B02011EF9F00B927AC /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,7 +122,9 @@
 				FAAF75BA201262C700B927AC /* View */,
 				FAAF75BE2012634F00B927AC /* Controller */,
 				FA0788802011DCD500A0D785 /* Info.plist */,
+				FA1AA3CD20128C9700451B72 /* Frameworks */,
 				FAAF75BF2012670100B927AC /* Resources */,
+				FA1AA3D6201290B500451B72 /* PhotoWeatherApp-Bridging-Header.h */,
 			);
 			path = PhotoWeatherApp;
 			sourceTree = "<group>";
@@ -117,6 +136,17 @@
 				FA07888B2011DCD500A0D785 /* Info.plist */,
 			);
 			path = PhotoWeatherAppTests;
+			sourceTree = "<group>";
+		};
+		FA1AA3CD20128C9700451B72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA1AA3D120128E1700451B72 /* Bolts.framework */,
+				FA1AA3CF20128E1700451B72 /* FBSDKCoreKit.framework */,
+				FA1AA3D020128E1700451B72 /* FBSDKLoginKit.framework */,
+				FA1AA3CE20128E1500451B72 /* FBSDKShareKit.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		FAAF75AE2011EF9E00B927AC /* Frameworks */ = {
@@ -140,6 +170,8 @@
 			children = (
 				FA0788762011DCD500A0D785 /* ViewController.swift */,
 				FA1AA3C9201271A200451B72 /* HistoryViewController.swift */,
+				FA1AA3CB201281A900451B72 /* ImageViewController.swift */,
+				FA1AA3DA201292D300451B72 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -215,6 +247,7 @@
 				TargetAttributes = {
 					FA0788702011DCD500A0D785 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					FA0788842011DCD500A0D785 = {
@@ -270,6 +303,7 @@
 			files = (
 				FAAF75CE20126F4500B927AC /* WeatherPhoto+CoreDataProperties.swift in Sources */,
 				FA1AA3CA201271A200451B72 /* HistoryViewController.swift in Sources */,
+				FA1AA3CC201281A900451B72 /* ImageViewController.swift in Sources */,
 				FA0788772011DCD500A0D785 /* ViewController.swift in Sources */,
 				FAAF75B22011FFB500B927AC /* NetworkCode.swift in Sources */,
 				FAAF75CD20126F4500B927AC /* WeatherPhoto+CoreDataClass.swift in Sources */,
@@ -277,6 +311,7 @@
 				FAAF75C32012676000B927AC /* Model.xcdatamodeld in Sources */,
 				FAAF75BC201262F000B927AC /* ModifiedCellCollectionViewCell.swift in Sources */,
 				FA0788752011DCD500A0D785 /* AppDelegate.swift in Sources */,
+				FA1AA3DB201292D300451B72 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,12 +468,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QR7XS74D7X;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PhotoWeatherApp/Frameworks",
+				);
 				INFOPLIST_FILE = PhotoWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.odev.PhotoWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoWeatherApp/PhotoWeatherApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -448,12 +490,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QR7XS74D7X;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PhotoWeatherApp/Frameworks",
+				);
 				INFOPLIST_FILE = PhotoWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.odev.PhotoWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhotoWeatherApp/PhotoWeatherApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
