@@ -13,6 +13,11 @@
 		FA07887C2011DCD500A0D785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA07887B2011DCD500A0D785 /* Assets.xcassets */; };
 		FA07887F2011DCD500A0D785 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA07887D2011DCD500A0D785 /* LaunchScreen.storyboard */; };
 		FA07888A2011DCD500A0D785 /* PhotoWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0788892011DCD500A0D785 /* PhotoWeatherAppTests.swift */; };
+		FAAF75B02011EF9F00B927AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAF75AF2011EF9F00B927AC /* CoreLocation.framework */; };
+		FAAF75B22011FFB500B927AC /* NetworkCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B12011FFB500B927AC /* NetworkCode.swift */; };
+		FAAF75B32011FFB500B927AC /* NetworkCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B12011FFB500B927AC /* NetworkCode.swift */; };
+		FAAF75B52012092000B927AC /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B42012092000B927AC /* GCD.swift */; };
+		FAAF75B62012092000B927AC /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B42012092000B927AC /* GCD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,9 @@
 		FA0788852011DCD500A0D785 /* PhotoWeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoWeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0788892011DCD500A0D785 /* PhotoWeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWeatherAppTests.swift; sourceTree = "<group>"; };
 		FA07888B2011DCD500A0D785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAAF75AF2011EF9F00B927AC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FAAF75B12011FFB500B927AC /* NetworkCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCode.swift; sourceTree = "<group>"; };
+		FAAF75B42012092000B927AC /* GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAAF75B02011EF9F00B927AC /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +71,7 @@
 				FA0788732011DCD500A0D785 /* PhotoWeatherApp */,
 				FA0788882011DCD500A0D785 /* PhotoWeatherAppTests */,
 				FA0788722011DCD500A0D785 /* Products */,
+				FAAF75AE2011EF9E00B927AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +89,8 @@
 			children = (
 				FA0788742011DCD500A0D785 /* AppDelegate.swift */,
 				FA0788762011DCD500A0D785 /* ViewController.swift */,
+				FAAF75B42012092000B927AC /* GCD.swift */,
+				FAAF75B12011FFB500B927AC /* NetworkCode.swift */,
 				FA0788782011DCD500A0D785 /* Main.storyboard */,
 				FA07887B2011DCD500A0D785 /* Assets.xcassets */,
 				FA07887D2011DCD500A0D785 /* LaunchScreen.storyboard */,
@@ -94,6 +106,14 @@
 				FA07888B2011DCD500A0D785 /* Info.plist */,
 			);
 			path = PhotoWeatherAppTests;
+			sourceTree = "<group>";
+		};
+		FAAF75AE2011EF9E00B927AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAAF75AF2011EF9F00B927AC /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +220,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA0788772011DCD500A0D785 /* ViewController.swift in Sources */,
+				FAAF75B22011FFB500B927AC /* NetworkCode.swift in Sources */,
+				FAAF75B52012092000B927AC /* GCD.swift in Sources */,
 				FA0788752011DCD500A0D785 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,7 +230,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAAF75B62012092000B927AC /* GCD.swift in Sources */,
 				FA07888A2011DCD500A0D785 /* PhotoWeatherAppTests.swift in Sources */,
+				FAAF75B32011FFB500B927AC /* NetworkCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +378,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QR7XS74D7X;
 				INFOPLIST_FILE = PhotoWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.odev.PhotoWeatherApp;
@@ -368,6 +393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QR7XS74D7X;
 				INFOPLIST_FILE = PhotoWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.odev.PhotoWeatherApp;
