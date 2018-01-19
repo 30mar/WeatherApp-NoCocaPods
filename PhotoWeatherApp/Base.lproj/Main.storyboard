@@ -137,7 +137,6 @@
                         <outlet property="temp" destination="bTs-kv-imv" id="TVZ-KH-tG0"/>
                         <outlet property="toolbar" destination="wI4-64-7Ih" id="d5t-fp-Fb3"/>
                         <outlet property="watherIcon" destination="RC7-PT-05b" id="pdU-7y-pFj"/>
-                        <segue destination="x6k-lz-FNl" kind="show" identifier="show" id="MdT-Ra-cPa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -147,13 +146,20 @@
         <!--History View Controller-->
         <scene sceneID="3wz-eJ-IAy">
             <objects>
-                <viewController id="x6k-lz-FNl" customClass="HistoryViewController" customModule="PhotoWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="history" id="x6k-lz-FNl" customClass="HistoryViewController" customModule="PhotoWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bZZ-bK-D4v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d0d-Hw-OJq">
-                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3I1-pl-f3O">
+                                <rect key="frame" x="20" y="20" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backPressed:" destination="x6k-lz-FNl" eventType="touchUpInside" id="F2K-9s-qlQ"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d0d-Hw-OJq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jMa-6g-xlW">
                                     <size key="itemSize" width="113" height="117"/>
@@ -181,10 +187,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3I1-pl-f3O">
-                                <rect key="frame" x="20" y="20" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -198,13 +200,12 @@
                         <viewLayoutGuide key="safeArea" id="NTB-AZ-Xvx"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="d0d-Hw-OJq" id="vnz-Pi-2e0"/>
-                        <segue destination="f7p-BQ-IqE" kind="show" identifier="preview" id="NWr-ez-N60"/>
+                        <outlet property="collection" destination="d0d-Hw-OJq" id="1dB-3u-LkL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E3r-YI-xPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="911" y="128"/>
+            <point key="canvasLocation" x="909.60000000000002" y="127.28635682158921"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zUT-Gs-tvq">

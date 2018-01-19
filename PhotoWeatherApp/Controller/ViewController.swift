@@ -8,7 +8,7 @@
 
 import CoreLocation
 import UIKit
-
+import CoreData
 class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var temp: UILabel!
@@ -17,7 +17,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var condition: UILabel!
     @IBOutlet weak var overlayView: UIImageView!
     @IBOutlet weak var background: UIImageView!
-    
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var toolbar: UIToolbar!
     var cityName:String?
@@ -28,6 +27,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var iconImage:UIImage?
     var locationManager: CLLocationManager!
     var weatherImage:UIImage?
+    private var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistantContainer.viewContext
     // location manager setup so we can get user coordinates in the beginning and get the weather for that coordinates
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,17 +62,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
     @IBAction func donePressed(_ sender: Any) {
         doneButton.isEnabled = false
-         self.weatherImage = generateFinalPhoto()
-        performSegue(withIdentifier: "show", sender: self)
+        self.weatherImage = generateFinalPhoto()
+        let newPhoto = WeatherPhoto(entity: WeatherPhoto.entity(), insertInto: context)
+        newPhoto.image = UIImagePNGRepresentation(self.weatherImage!) as NSData?
+        appDelegate.saveContext()
+        let controller = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
+        present(controller, animated: true, completion: nil)
+        //performSegue(withIdentifier: "show", sender: self)
         
         
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier! == "show"{
-            let historyVC = segue.destination as! HistoryViewController
-            //historyVC.image = weatherImage
-        }
-    }
+ 
     @IBAction func CameraPressed(_ sender: Any) {
         
         chooseSource(sourceType: .camera)
