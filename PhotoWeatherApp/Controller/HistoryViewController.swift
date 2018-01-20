@@ -23,11 +23,26 @@ class HistoryViewController:UIViewController,UICollectionViewDelegate,UICollecti
     }
 
     @IBAction func backPressed(_ sender: Any) {
-        for item in imagesArray!{
-            context.delete(item)
-            appDelegate.saveContext()
-        }
+//        for item in imagesArray!{
+//            context.delete(item)
+//            appDelegate.saveContext()
+//        }
         dismiss(animated: true, completion: nil)
+    }
+    override func viewDidLayoutSubviews() {
+        print("in viewDidLayoutSubviews()")
+        super.viewDidLayoutSubviews()
+        
+        // Layout the collection view so that cells take up 1/3 of the width,
+        // with no space in-between.
+        let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        
+        let width = floor(self.collection.frame.size.width/3)
+        layout.itemSize = CGSize(width: width, height: width)
+        collection.collectionViewLayout = layout
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -54,6 +69,16 @@ class HistoryViewController:UIViewController,UICollectionViewDelegate,UICollecti
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let currentObject = imagesArray![(indexPath as NSIndexPath).row]
+       
+        guard let currentImage = currentObject.image as? Data else{
+            return
+        }
+        let controller = storyboard?.instantiateViewController(withIdentifier: "full") as! ImageViewController
+        controller.image = UIImage(data: currentImage)
+        self.present(controller, animated: true, completion: nil)
+        }
+
     }
     
-}
+

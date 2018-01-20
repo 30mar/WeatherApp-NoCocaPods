@@ -36,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut() // this is an instance function
         // Override point for customization after application launch.
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
       return true
