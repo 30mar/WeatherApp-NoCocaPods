@@ -21,12 +21,19 @@ class HistoryViewController:UIViewController,UICollectionViewDelegate,UICollecti
         collection.dataSource = self
        // print("historrrryyy") 
     }
+    @IBAction func ClearPressed(_ sender: Any) {
+        for item in imagesArray!{
+            context.delete(item)
+            appDelegate.saveContext()
+            imagesArray?.removeAll()
+        }
+        imagesArray?.removeAll()
 
+        collection.reloadData()
+    }
+    
     @IBAction func backPressed(_ sender: Any) {
-//        for item in imagesArray!{
-//            context.delete(item)
-//            appDelegate.saveContext()
-//        }
+
         dismiss(animated: true, completion: nil)
     }
     override func viewDidLayoutSubviews() {

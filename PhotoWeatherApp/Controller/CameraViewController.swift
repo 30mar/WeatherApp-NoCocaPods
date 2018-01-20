@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CameraViewController.swift
 //  PhotoWeatherApp
 //
 //  Created by Macbook on 1/19/18.
@@ -9,7 +9,10 @@
 import CoreLocation
 import UIKit
 import CoreData
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class CameraViewController: UIViewController, CLLocationManagerDelegate {
+   
+    @IBOutlet weak var loadingLAbel: UILabel!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var temp: UILabel!
     @IBOutlet weak var watherIcon: UIImageView!
@@ -19,10 +22,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var toolbar: UIToolbar!
-    
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    
     @IBOutlet weak var humedityLabel: UILabel!
+    
     var country:String?
     var humedity:String?
     var capitalWithCountry:String?
@@ -33,10 +35,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var iconImage:UIImage?
     var locationManager: CLLocationManager!
     var weatherImage:UIImage?
-    private var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistantContainer.viewContext
+    
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistantContainer.viewContext
     // location manager setup so we can get user coordinates in the beginning and get the weather for that coordinates
     override func viewDidLoad() {
+        loadingLAbel.isHidden = false
+        activity.startAnimating()
         super.viewDidLoad()
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -63,6 +68,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         self.country = country!
                         self.humedity = "humidity: \(humedity!)"
                         self.iconUrl = icon!
+                        self.activity.stopAnimating()
+                        self.loadingLAbel.isHidden = true
                         self.cameraButton.isEnabled = true
                         }
                    
@@ -113,7 +120,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 }
     
-extension ViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+extension CameraViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
             background.contentMode = .scaleAspectFill
