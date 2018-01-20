@@ -24,6 +24,8 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var humedityLabel: UILabel!
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var takePhotoLabel: UILabel!
     
     var country:String?
     var humedity:String?
@@ -36,10 +38,12 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!
     var weatherImage:UIImage?
     
+    //Defining the appDelegate and the context to interact with coredata
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = (UIApplication.shared.delegate as! AppDelegate).persistantContainer.viewContext
+    
     // location manager setup so we can get user coordinates in the beginning and get the weather for that coordinates
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         loadingLAbel.isHidden = false
         activity.startAnimating()
         super.viewDidLoad()
@@ -48,7 +52,8 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         
         
-    }  //ViewDidLoad
+    }
+    
     // this function is called everytime the user changes his/her location
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
@@ -59,6 +64,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
             print("locations = \(locValue.latitude) longtude: \(locValue.longitude)")
             NetworkCode.sharedInstance().getWeatherDetails(latitude: locValue.latitude, longitude: locValue.longitude, completionHandler: { (success, city, temp, weather, subweather, icon,country,humedity) in
                 if success{
+                    //this is the function from the GCD file, it allow jumping into the main thread to preform some updates and then returns to background thread
                     performUIUpdatesOnMain {
                         let correctCity = city!.replacingOccurrences(of: "testing", with: "Cairo")
                         self.capitalWithCountry = "\(correctCity), \(country!)"
@@ -66,9 +72,11 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
                         self.tempreture = "\(temp!)°"
                         self.weatherSubCondition = subweather!
                         self.country = country!
-                        self.humedity = "humidity: \(humedity!)"
+                        self.humedity = "humidity: \(humedity!)%"
                         self.iconUrl = icon!
                         self.activity.stopAnimating()
+                        self.welcomeLabel.isHidden = false
+                        self.takePhotoLabel.isHidden = false
                         self.loadingLAbel.isHidden = true
                         self.cameraButton.isEnabled = true
                         }
@@ -79,10 +87,15 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
         
     @IBAction func donePressed(_ sender: Any) {
         doneButton.isEnabled = false
+        // Generate a combiled photo from the camera output and the weather data
         self.weatherImage = generateFinalPhoto()
+        //create a new entity to be saved
         let newPhoto = WeatherPhoto(entity: WeatherPhoto.entity(), insertInto: context)
+        // convert ui representation to binary data to allow saving in coredata
         newPhoto.image = UIImagePNGRepresentation(self.weatherImage!) as NSData?
+        //saving into coredata
         appDelegate.saveContext()
+        //presenting the next viewcontroller: Hiroey viewcontroller
         let controller = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
         present(controller, animated: true, completion: nil)
         
@@ -90,7 +103,8 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     }
  
     @IBAction func CameraPressed(_ sender: Any) {
-        
+        self.welcomeLabel.isHidden = true
+        self.takePhotoLabel.isHidden = true
         chooseSource(sourceType: .camera)
         NetworkCode.sharedInstance().downloadIcon(icon: iconUrl!, completion: { (success, image) in
             if success{
@@ -147,9 +161,10 @@ extension CameraViewController: UIImagePickerControllerDelegate,UINavigationCont
         self.navigationController?.setNavigationBarHidden(hide, animated: true)
     }
     func generateFinalPhoto() -> UIImage {
-        //Hide toolbar and navbar
+        // This is the photo that will be stored in coredata and will be shared later
+        // Hide toolbar and navbar
         hideBarsAndButtons(hide: true)
-        // Render view to an image
+        // Render view to an image , i.e: cobine all visual layers to form an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!

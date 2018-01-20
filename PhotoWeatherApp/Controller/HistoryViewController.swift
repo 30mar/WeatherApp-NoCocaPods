@@ -10,38 +10,36 @@ import UIKit
 import CoreData
 class HistoryViewController:UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
-    
     @IBOutlet weak var collection: UICollectionView!
+    
     var imagesArray:[WeatherPhoto]?
-    private var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistantContainer.viewContext
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistantContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collection.delegate = self
         collection.dataSource = self
-       // print("historrrryyy") 
     }
+    
     @IBAction func ClearPressed(_ sender: Any) {
+        // removing every item from the coredata and emptying the datasource array
         for item in imagesArray!{
             context.delete(item)
             appDelegate.saveContext()
             imagesArray?.removeAll()
         }
         imagesArray?.removeAll()
-
         collection.reloadData()
     }
     
     @IBAction func backPressed(_ sender: Any) {
-
         dismiss(animated: true, completion: nil)
     }
+    
+    //Adjusting the spacing between cells
     override func viewDidLayoutSubviews() {
-        print("in viewDidLayoutSubviews()")
         super.viewDidLayoutSubviews()
-        
-        // Layout the collection view so that cells take up 1/3 of the width,
-        // with no space in-between.
         let layout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0
@@ -51,9 +49,10 @@ class HistoryViewController:UIViewController,UICollectionViewDelegate,UICollecti
         layout.itemSize = CGSize(width: width, height: width)
         collection.collectionViewLayout = layout
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(true)
+        //Trying to fetch photos from coredata
         do{
             imagesArray = try context.fetch(WeatherPhoto.fetchRequest())
             print("the count is \(imagesArray?.count)")
@@ -62,12 +61,15 @@ class HistoryViewController:UIViewController,UICollectionViewDelegate,UICollecti
         }
        // collection.reloadData()
     }
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imagesArray!.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ModifiedCellCollectionViewCell
         let currentObject = imagesArray![(indexPath as NSIndexPath).row]
+        //Converting binary data to uiimage
         if let currentImage = currentObject.image as? Data{
             cell.image.image = UIImage(data: currentImage)
             cell.image.contentMode = .scaleAspectFill

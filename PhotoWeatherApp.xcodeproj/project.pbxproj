@@ -20,8 +20,6 @@
 		FA1AA3D420128E1700451B72 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1AA3D020128E1700451B72 /* FBSDKLoginKit.framework */; };
 		FA1AA3D520128E1700451B72 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1AA3D120128E1700451B72 /* Bolts.framework */; };
 		FA1AA3DB201292D300451B72 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1AA3DA201292D300451B72 /* LoginViewController.swift */; };
-		FA1AA3DD2012E6AE00451B72 /* FacebookShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1AA3DC2012E6AE00451B72 /* FacebookShareViewController.swift */; };
-		FA1AA3E020130C0D00451B72 /* TwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1AA3DF20130C0D00451B72 /* TwitterViewController.swift */; };
 		FAAF75B02011EF9F00B927AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAAF75AF2011EF9F00B927AC /* CoreLocation.framework */; };
 		FAAF75B22011FFB500B927AC /* NetworkCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B12011FFB500B927AC /* NetworkCode.swift */; };
 		FAAF75B32011FFB500B927AC /* NetworkCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF75B12011FFB500B927AC /* NetworkCode.swift */; };
@@ -64,9 +62,7 @@
 		FA1AA3D120128E1700451B72 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		FA1AA3D6201290B500451B72 /* PhotoWeatherApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhotoWeatherApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA1AA3DA201292D300451B72 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		FA1AA3DC2012E6AE00451B72 /* FacebookShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookShareViewController.swift; sourceTree = "<group>"; };
 		FA1AA3DE2013072100451B72 /* PhotoWeatherApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhotoWeatherApp.entitlements; sourceTree = "<group>"; };
-		FA1AA3DF20130C0D00451B72 /* TwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterViewController.swift; sourceTree = "<group>"; };
 		FAAF75AF2011EF9F00B927AC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		FAAF75B12011FFB500B927AC /* NetworkCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCode.swift; sourceTree = "<group>"; };
 		FAAF75B42012092000B927AC /* GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
@@ -178,8 +174,6 @@
 				FA1AA3C9201271A200451B72 /* HistoryViewController.swift */,
 				FA1AA3CB201281A900451B72 /* ImageViewController.swift */,
 				FA1AA3DA201292D300451B72 /* LoginViewController.swift */,
-				FA1AA3DC2012E6AE00451B72 /* FacebookShareViewController.swift */,
-				FA1AA3DF20130C0D00451B72 /* TwitterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -318,11 +312,9 @@
 				FA1AA3CA201271A200451B72 /* HistoryViewController.swift in Sources */,
 				FA1AA3CC201281A900451B72 /* ImageViewController.swift in Sources */,
 				FA0788772011DCD500A0D785 /* CameraViewController.swift in Sources */,
-				FA1AA3DD2012E6AE00451B72 /* FacebookShareViewController.swift in Sources */,
 				FAAF75B22011FFB500B927AC /* NetworkCode.swift in Sources */,
 				FAAF75CD20126F4500B927AC /* WeatherPhoto+CoreDataClass.swift in Sources */,
 				FAAF75B52012092000B927AC /* GCD.swift in Sources */,
-				FA1AA3E020130C0D00451B72 /* TwitterViewController.swift in Sources */,
 				FAAF75C32012676000B927AC /* Model.xcdatamodeld in Sources */,
 				FAAF75BC201262F000B927AC /* ModifiedCellCollectionViewCell.swift in Sources */,
 				FA0788752011DCD500A0D785 /* AppDelegate.swift in Sources */,
