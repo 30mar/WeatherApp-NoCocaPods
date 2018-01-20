@@ -37,13 +37,8 @@ class FacebookShareViewController: UIViewController,FBSDKSharingDelegate,UIImage
         
     }
     @IBAction func buttonPressed(_ sender: Any) {
-        print("111")
         let content = FBSDKSharePhotoContent()
-        print("222")
-
         content.photos =  [FBSDKSharePhoto(image: image!, userGenerated: true)]
-        print("333")
-
         let dialog = FBSDKShareDialog()
         dialog.fromViewController = self
         dialog.shareContent = content

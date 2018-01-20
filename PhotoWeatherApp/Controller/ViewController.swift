@@ -19,7 +19,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var toolbar: UIToolbar!
-    var cityName:String?
+    
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
+    
+    @IBOutlet weak var humedityLabel: UILabel!
+    var country:String?
+    var humedity:String?
+    var capitalWithCountry:String?
     var tempreture:String?
     var weatherConditon:String?
     var weatherSubCondition:String?
@@ -46,15 +52,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             //getting user coordinates
             let locValue: CLLocationCoordinate2D = (manager.location?.coordinate)!
             print("locations = \(locValue.latitude) longtude: \(locValue.longitude)")
-            NetworkCode.sharedInstance().getWeatherDetails(latitude: locValue.latitude, longitude: locValue.longitude, completionHandler: { (success, city, temp, weather, subweather, icon) in
+            NetworkCode.sharedInstance().getWeatherDetails(latitude: locValue.latitude, longitude: locValue.longitude, completionHandler: { (success, city, temp, weather, subweather, icon,country,humedity) in
                 if success{
                     performUIUpdatesOnMain {
-                        self.cityName = city!
+                        let correctCity = city!.replacingOccurrences(of: "testing", with: "Cairo")
+                        self.capitalWithCountry = "\(correctCity), \(country!)"
                         self.weatherConditon = weather!
-                        self.tempreture = "\(temp!)'C"
+                        self.tempreture = "\(temp!)°"
                         self.weatherSubCondition = subweather!
+                        self.country = country!
+                        self.humedity = "humidity: \(humedity!)"
                         self.iconUrl = icon!
-                    }
+                        self.cameraButton.isEnabled = true
+                        }
                    
                 }})
 
@@ -99,6 +109,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         subCondition.isHidden = false
         temp.isHidden = false
         watherIcon.isHidden = false
+        humedityLabel.isHidden = false
     }
 }
     
@@ -109,15 +120,14 @@ extension ViewController: UIImagePickerControllerDelegate,UINavigationController
             background.image = pickedImage
             
         }
-//        saveButton.isEnabled = true
-//        shareButton.isEnabled = true
         unHideOverlay()
-        city.text = cityName
+        city.text = capitalWithCountry
         condition.text = weatherConditon!
         subCondition.text = weatherSubCondition!
         temp.text = tempreture
         watherIcon.image = iconImage!
         doneButton.isEnabled = true
+        humedityLabel.text = humedity!
         dismiss(animated: true, completion: nil)
         
         
@@ -127,7 +137,7 @@ extension ViewController: UIImagePickerControllerDelegate,UINavigationController
     }
     func hideBarsAndButtons(hide: Bool) {
         toolbar.isHidden = hide
-        //self.navigationController?.setNavigationBarHidden(hide, animated: true)
+        self.navigationController?.setNavigationBarHidden(hide, animated: true)
     }
     func generateFinalPhoto() -> UIImage {
         //Hide toolbar and navbar

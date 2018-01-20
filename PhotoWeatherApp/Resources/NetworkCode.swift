@@ -12,7 +12,7 @@ let apiKey = "65503122517102020442c688f21cdc72"
 
 class NetworkCode{
    
-    func getWeatherDetails(latitude: Double,longitude:Double,completionHandler:@escaping (_ success:Bool,_ cityName:String?,_ temp: Double?,_ weatherCondition:String?,_ subWeatherCondition:String?,_ photoId:String?)->()){
+    func getWeatherDetails(latitude: Double,longitude:Double,completionHandler:@escaping (_ success:Bool,_ cityName:String?,_ temp: Double?,_ weatherCondition:String?,_ subWeatherCondition:String?,_ photoId:String?,_ country:String?,_ humidity:Double?)->()){
         
         /* 1. Set the parameters */
         var address = "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude)&lon=\(longitude)&APPID=\(apiKey)&units=metric"
@@ -88,14 +88,27 @@ class NetworkCode{
                 displayError("Cannot find temp key in \(parsedResult)")
                 return
             }
+            guard let humidity = mainTemp["humidity"] else {
+                displayError("Cannot find humidity key in \(parsedResult)")
+                return
+            }
+            guard let sys = parsedResult["sys"] as? [String:Any] else {
+                displayError("Cannot find sys key in \(parsedResult)")
+                return
+            }
+            guard let country = sys["country"] as? String else {
+                displayError("Cannot find country key in \(parsedResult)")
+                return
+            }
             print(cityName)
             print(temp)
             print(mainCondition)
             print(subCondition)
             print(icon)
+            print(humidity)
 
             /* 6. Use the data! */
-            completionHandler(true,cityName, temp, mainCondition, subCondition, icon)
+            completionHandler(true,cityName, temp, mainCondition, subCondition, icon,country,humidity)
         }
 
         /* 7. Start the request */
@@ -108,7 +121,6 @@ class NetworkCode{
             guard error == nil else {
             return debugPrint(error)
             }
-                print("cucccccccessss")
                 // create image
                 let downloadedImage = UIImage(data: data!)
                 // update UI on a main thread
