@@ -35,13 +35,14 @@ class ImageViewController: UIViewController {
         alert.addAction(TwitterAction)
         self.present(alert, animated: true, completion: nil)
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier! == "twitter"{
-//            
-//        }
-//        else if segue.identifier! == "facebook"{
-//            
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier! == "twitter"{
+            
+        }
+        else if segue.identifier! == "facebook"{
+            let controller = segue.destination as! LoginViewController
+            controller.image = image!
+        }
+    }
    
 }

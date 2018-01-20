@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    var image:UIImage
+    var image:UIImage?
     let loginButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
         button.readPermissions = ["email"]
@@ -37,6 +37,7 @@ extension LoginViewController:FBSDKLoginButtonDelegate{
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if result.isCancelled == false{
             let controller = storyboard?.instantiateViewController(withIdentifier: "shareFB") as? FacebookShareViewController
+            controller?.image = image!
             present(controller!, animated: true, completion: nil)
         }
     }

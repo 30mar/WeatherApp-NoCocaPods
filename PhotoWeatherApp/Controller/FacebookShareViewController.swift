@@ -9,42 +9,24 @@
 import UIKit
 
 class FacebookShareViewController: UIViewController,FBSDKSharingDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-    func validate() throws {
-        print("dfs")
-    }
-    let x = FBSDKShareDialog()
+    
+    var image: UIImage?
     let shareButton=FBSDKShareButton()
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-    }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {return}
-        let photoToBeShared = FBSDKSharePhoto(image: pickedImage, userGenerated: true)
+        //let photoToBeShared = FBSDKSharePhoto(image: image!, userGenerated: true)
         let content = FBSDKSharePhotoContent()
-        content.photos = [photoToBeShared]
-       try FBSDKShareDialog.show(from: self, with: content, delegate: nil)
-       shareButton.shareContent = content
+       // content.photos = [photoToBeShared]
+        shareButton.shareContent = content
         self.view.addSubview(shareButton)
         shareButton.center = view.center
-        print("the content is \(shareButton.shareContent)")
+//        let dialog : FBSDKShareDialog = FBSDKShareDialog()
+//        dialog.fromViewController = self
+//        dialog.shareContent = content
+//        dialog.mode = FBSDKShareDialogMode.feedWeb
+//        dialog.show()
+            }
 
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func pickPeessed(_ sender: Any) {
-        chooseSource(sourceType: .photoLibrary)
-    }
-    
-    
-    func chooseSource (sourceType:UIImagePickerControllerSourceType){
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = sourceType
-        self.present(imagePicker, animated: true, completion: nil)
-        
-    }
 
     @IBAction func logoutPressed(_ sender: Any) {
         let loginManager = FBSDKLoginManager()
@@ -53,6 +35,21 @@ class FacebookShareViewController: UIViewController,FBSDKSharingDelegate,UIImage
     }
     func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable : Any]!) {
         
+    }
+    @IBAction func buttonPressed(_ sender: Any) {
+        print("111")
+        let content = FBSDKSharePhotoContent()
+        print("222")
+
+        content.photos =  [FBSDKSharePhoto(image: image!, userGenerated: true)]
+        print("333")
+
+        let dialog = FBSDKShareDialog()
+        dialog.fromViewController = self
+        dialog.shareContent = content
+        dialog.delegate = self
+        dialog.mode = FBSDKShareDialogMode.native
+        dialog.show()
     }
     
     func sharer(_ sharer: FBSDKSharing!, didFailWithError error: Error!) {

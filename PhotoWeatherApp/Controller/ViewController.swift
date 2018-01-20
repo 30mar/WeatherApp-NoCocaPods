@@ -68,7 +68,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         appDelegate.saveContext()
         let controller = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
         present(controller, animated: true, completion: nil)
-        //performSegue(withIdentifier: "show", sender: self)
         
         
     }
@@ -80,7 +79,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if success{
                 performUIUpdatesOnMain {
                     self.iconImage = image
-                    print("imaaaage \(image)")
                 }
             }
         })
